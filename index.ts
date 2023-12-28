@@ -1,6 +1,9 @@
 import { 
     SQSEvent, 
-    SQSHandler
+    SQSHandler,
+    S3EventRecord,
+    S3Handler,
+    S3Event
 } from 'aws-lambda';
 
 import {
@@ -49,7 +52,7 @@ async function getObjectAsString(key: string): Promise<string> {
 }
 
 
-export const handler: SQSHandler = async (event: SQSEvent) => {
+export const handler: S3Handler = async (event: S3Event) => {
     
     try {
         const body = getObjectAsString(file_name);
